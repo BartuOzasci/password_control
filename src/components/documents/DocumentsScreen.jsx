@@ -26,11 +26,11 @@ export default function DocumentsScreen() {
   };
 
   return (
-    <div className="px-4 py-5 animate-fade-in">
+    <div className="px-5 py-6 animate-fade-in">
       {/* Başlık */}
-      <div className="text-center mb-5">
-        <h2 className="text-lg font-bold text-white">Belgelerim</h2>
-        <p className="text-slate-500 text-xs mt-1">
+      <div className="text-center mb-6">
+        <h2 className="text-2xl font-bold text-white">Belgelerim</h2>
+        <p className="text-slate-500 text-sm mt-2">
           Belgeleri görüntüleyin veya indirin
         </p>
       </div>
@@ -56,7 +56,7 @@ export default function DocumentsScreen() {
           <p className="text-slate-500 text-sm">Henüz belge eklenmemiş</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {documentsData.map((doc, index) => (
             <div
               key={doc.id}
@@ -96,16 +96,16 @@ export default function DocumentsScreen() {
               </div>
 
               {/* İçerik */}
-              <div className="p-3">
-                <h3 className="text-sm font-bold text-white truncate mb-3">
+              <div className="p-4">
+                <h3 className="text-base font-bold text-white truncate mb-4">
                   {doc.title}
                 </h3>
 
-                <div className="flex flex-col gap-2">
+                <div className="flex gap-3">
                   <Button
                     variant="secondary"
-                    size="sm"
-                    className="w-full text-xs"
+                    size="md"
+                    className="flex-1"
                     onClick={() => handleView(doc.file)}
                   >
                     <span className="flex items-center justify-center gap-1.5">
@@ -133,8 +133,8 @@ export default function DocumentsScreen() {
                   </Button>
                   <Button
                     variant="primary"
-                    size="sm"
-                    className="w-full text-xs"
+                    size="md"
+                    className="flex-1"
                     onClick={() => handleDownload(doc.file, doc.title)}
                   >
                     <span className="flex items-center justify-center gap-1.5">

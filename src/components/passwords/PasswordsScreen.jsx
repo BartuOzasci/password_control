@@ -68,10 +68,10 @@ export default function PasswordsScreen({ onActivity }) {
   };
 
   return (
-    <div className="px-4 py-5 animate-fade-in">
+    <div className="px-5 py-6 animate-fade-in">
       {/* Başlık & Ekle butonu */}
-      <div className="flex items-center justify-center mb-5">
-        <Button variant="primary" size="md" onClick={() => setModalOpen(true)}>
+      <div className="flex items-center justify-center mb-6">
+        <Button variant="primary" size="lg" onClick={() => setModalOpen(true)}>
           <span className="flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -117,20 +117,20 @@ export default function PasswordsScreen({ onActivity }) {
           </p>
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-4">
           {passwords.map((item, index) => (
             <div
               key={item.id}
-              className="bg-dark-card border border-white/5 rounded-2xl p-4 animate-slide-up"
+              className="bg-dark-card border border-white/5 rounded-2xl p-5 animate-slide-up"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               {/* Başlık */}
               <div className="flex items-center justify-between mb-3">
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <span className="w-8 h-8 flex items-center justify-center bg-primary/15 rounded-lg text-primary">
+                <h3 className="text-base font-bold text-white flex items-center gap-3">
+                  <span className="w-10 h-10 flex items-center justify-center bg-primary/15 rounded-xl text-primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="w-4 h-4"
+                      className="w-5 h-5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -148,17 +148,17 @@ export default function PasswordsScreen({ onActivity }) {
               </div>
 
               {/* Şifre alanı */}
-              <div className="bg-dark-surface/60 rounded-xl px-4 py-3 mb-3 font-mono text-sm text-slate-300 tracking-wider">
+              <div className="bg-dark-surface/60 rounded-xl px-5 py-4 mb-4 font-mono text-base text-slate-300 tracking-wider">
                 {visibleIds.has(item.id)
                   ? item.password
                   : "•".repeat(item.password.length)}
               </div>
 
               {/* Butonlar */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
                 <Button
                   variant={visibleIds.has(item.id) ? "ghost" : "secondary"}
-                  size="sm"
+                  size="md"
                   onClick={() => toggleVisible(item.id)}
                   className="flex-1"
                 >
@@ -166,7 +166,7 @@ export default function PasswordsScreen({ onActivity }) {
                 </Button>
                 <Button
                   variant="danger"
-                  size="sm"
+                  size="md"
                   onClick={() => handleDelete(item.id)}
                 >
                   <svg
@@ -198,7 +198,7 @@ export default function PasswordsScreen({ onActivity }) {
       >
         <div className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">
+            <label className="block text-sm font-semibold text-slate-400 mb-2 uppercase tracking-wider">
               Başlık
             </label>
             <input
@@ -206,11 +206,11 @@ export default function PasswordsScreen({ onActivity }) {
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
               placeholder="Örn: Instagram"
-              className="w-full px-4 py-3 bg-dark-surface/60 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
+              className="w-full px-5 py-4 text-base bg-dark-surface/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition min-h-[52px]"
             />
           </div>
           <div>
-            <label className="block text-xs font-semibold text-slate-400 mb-1.5 uppercase tracking-wider">
+            <label className="block text-sm font-semibold text-slate-400 mb-2 uppercase tracking-wider">
               Şifre
             </label>
             <input
@@ -218,10 +218,14 @@ export default function PasswordsScreen({ onActivity }) {
               value={newPass}
               onChange={(e) => setNewPass(e.target.value)}
               placeholder="Şifrenizi girin"
-              className="w-full px-4 py-3 bg-dark-surface/60 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
+              className="w-full px-5 py-4 text-base bg-dark-surface/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition min-h-[52px]"
             />
           </div>
-          <Button variant="primary" className="w-full py-3" onClick={handleAdd}>
+          <Button
+            variant="primary"
+            className="w-full py-4 text-lg min-h-[56px]"
+            onClick={handleAdd}
+          >
             Kaydet
           </Button>
         </div>

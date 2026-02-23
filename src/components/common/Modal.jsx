@@ -25,15 +25,15 @@ export default function Modal({ isOpen, onClose, title, children }) {
 
       {/* Content */}
       <div
-        className="relative w-full max-w-md bg-dark-card border border-white/10 rounded-2xl p-6 animate-slide-up"
+        className="relative w-full max-w-md bg-dark-card border border-white/10 rounded-3xl p-7 animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="flex items-center justify-between mb-5">
-          <h3 className="text-lg font-bold text-white">{title}</h3>
+          <h3 className="text-xl font-bold text-white">{title}</h3>
           <button
             onClick={onClose}
-            className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 transition text-slate-400 cursor-pointer"
+            className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition text-slate-400 cursor-pointer text-lg"
           >
             ✕
           </button>

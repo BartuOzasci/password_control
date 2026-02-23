@@ -39,7 +39,7 @@ export default function LoginScreen({ onLogin }) {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-sm animate-fade-in">
+      <div className="relative z-10 w-full max-w-md animate-fade-in">
         {/* ── Logo & Başlık ── */}
         <div className="flex flex-col items-center mb-10">
           <img
@@ -56,11 +56,11 @@ export default function LoginScreen({ onLogin }) {
         {/* ── Form ── */}
         <form
           onSubmit={handleSubmit}
-          className="bg-dark-card/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 space-y-5"
+          className="bg-dark-card/80 backdrop-blur-xl border border-white/10 rounded-3xl p-7 space-y-6"
         >
           {/* Kullanıcı Adı */}
           <div>
-            <label className="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">
+            <label className="block text-sm font-semibold text-slate-400 mb-2.5 uppercase tracking-wider">
               Kullanıcı Adı
             </label>
             <div className="relative">
@@ -86,14 +86,14 @@ export default function LoginScreen({ onLogin }) {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Kullanıcı adınız"
-                className="w-full pl-11 pr-4 py-3.5 bg-dark-surface/60 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition"
+                className="w-full pl-12 pr-5 py-4 text-base bg-dark-surface/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition min-h-[52px]"
               />
             </div>
           </div>
 
           {/* Şifre */}
           <div>
-            <label className="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">
+            <label className="block text-sm font-semibold text-slate-400 mb-2.5 uppercase tracking-wider">
               Şifre
             </label>
             <div className="relative">
@@ -119,12 +119,12 @@ export default function LoginScreen({ onLogin }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Şifreniz"
-                className="w-full pl-11 pr-12 py-3.5 bg-dark-surface/60 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition"
+                className="w-full pl-12 pr-14 py-4 text-base bg-dark-surface/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition min-h-[52px]"
               />
               <button
                 type="button"
                 onClick={() => setShowPass(!showPass)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition cursor-pointer"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition cursor-pointer p-1"
               >
                 {showPass ? (
                   <svg
@@ -190,7 +190,7 @@ export default function LoginScreen({ onLogin }) {
           {/* Giriş Butonu */}
           <Button
             type="submit"
-            className="w-full py-3.5 text-base"
+            className="w-full py-4 text-lg min-h-[56px]"
             disabled={loading}
           >
             {loading ? (
