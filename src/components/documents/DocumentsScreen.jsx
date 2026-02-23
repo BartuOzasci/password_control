@@ -28,7 +28,7 @@ export default function DocumentsScreen() {
   return (
     <div className="px-5 py-6 animate-fade-in">
       {/* Başlık */}
-      <div className="text-center mb-6">
+      <div className="text-center" style={{ marginBottom: 28 }}>
         <h2 className="text-2xl font-bold text-white">Belgelerim</h2>
         <p className="text-slate-500 text-sm mt-2">
           Belgeleri görüntüleyin veya indirin
@@ -56,7 +56,7 @@ export default function DocumentsScreen() {
           <p className="text-slate-500 text-sm">Henüz belge eklenmemiş</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: 32 }}>
           {documentsData.map((doc, index) => (
             <div
               key={doc.id}

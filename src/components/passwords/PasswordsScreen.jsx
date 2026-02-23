@@ -70,7 +70,7 @@ export default function PasswordsScreen({ onActivity }) {
   return (
     <div className="px-5 py-6 animate-fade-in">
       {/* Başlık & Ekle butonu */}
-      <div className="flex items-center justify-center my-8">
+      <div className="flex items-center justify-center" style={{ marginTop: 24, marginBottom: 32 }}>
         <Button variant="primary" size="lg" onClick={() => setModalOpen(true)}>
           <span className="flex items-center gap-2">
             <svg
@@ -117,7 +117,7 @@ export default function PasswordsScreen({ onActivity }) {
           </p>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="flex flex-col" style={{ gap: 24 }}>
           {passwords.map((item, index) => (
             <div
               key={item.id}

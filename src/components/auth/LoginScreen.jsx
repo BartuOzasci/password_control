@@ -56,16 +56,18 @@ export default function LoginScreen({ onLogin }) {
         {/* ── Form ── */}
         <form
           onSubmit={handleSubmit}
-          className="bg-dark-card/80 backdrop-blur-xl border border-white/10 rounded-3xl p-7 space-y-8"
+          className="bg-dark-card/80 backdrop-blur-xl border border-white/10 rounded-3xl p-7"
         >
           {/* Kullanıcı Adı */}
-          <div>
-            <label className="block text-sm font-semibold text-slate-400 mb-2.5 uppercase tracking-wider">
+          <div style={{ marginBottom: 28 }}>
+            <label
+              className="block text-sm font-semibold text-slate-400 uppercase tracking-wider"
+              style={{ marginBottom: 10 }}
+            >
               Kullanıcı Adı
             </label>
-            <div className="relative">
-              <span className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-500 z-10 pointer-events-none">
-                {/* User icon */}
+            <div className="flex items-center gap-3 bg-dark-surface/60 border border-white/10 rounded-2xl px-5 min-h-[52px] focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition">
+              <span className="text-slate-500 shrink-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5"
@@ -86,19 +88,21 @@ export default function LoginScreen({ onLogin }) {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Kullanıcı adınız"
-                className="w-full pl-14 pr-5 py-4 text-base bg-dark-surface/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition min-h-[52px]"
+                className="flex-1 py-4 text-base bg-transparent text-white placeholder-slate-500 focus:outline-none"
               />
             </div>
           </div>
 
           {/* Şifre */}
-          <div>
-            <label className="block text-sm font-semibold text-slate-400 mb-2.5 uppercase tracking-wider">
+          <div style={{ marginBottom: 28 }}>
+            <label
+              className="block text-sm font-semibold text-slate-400 uppercase tracking-wider"
+              style={{ marginBottom: 10 }}
+            >
               Şifre
             </label>
-            <div className="relative">
-              <span className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-500 z-10 pointer-events-none">
-                {/* Lock icon */}
+            <div className="flex items-center gap-3 bg-dark-surface/60 border border-white/10 rounded-2xl px-5 min-h-[52px] focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition">
+              <span className="text-slate-500 shrink-0">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5"
@@ -119,12 +123,12 @@ export default function LoginScreen({ onLogin }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Şifreniz"
-                className="w-full pl-14 pr-14 py-4 text-base bg-dark-surface/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition min-h-[52px]"
+                className="flex-1 py-4 text-base bg-transparent text-white placeholder-slate-500 focus:outline-none"
               />
               <button
                 type="button"
                 onClick={() => setShowPass(!showPass)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition cursor-pointer p-1"
+                className="text-slate-500 hover:text-slate-300 transition cursor-pointer shrink-0 p-1"
               >
                 {showPass ? (
                   <svg
@@ -168,7 +172,10 @@ export default function LoginScreen({ onLogin }) {
 
           {/* Hata mesajı */}
           {error && (
-            <div className="flex items-center gap-2 bg-danger/10 border border-danger/30 text-danger text-sm rounded-xl px-4 py-3 animate-fade-in">
+            <div
+              className="flex items-center gap-2 bg-danger/10 border border-danger/30 text-danger text-sm rounded-xl px-4 py-3 animate-fade-in"
+              style={{ marginBottom: 20 }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-4 h-4 shrink-0"
@@ -190,8 +197,9 @@ export default function LoginScreen({ onLogin }) {
           {/* Giriş Butonu */}
           <Button
             type="submit"
-            className="w-full py-4 text-lg min-h-[56px] mt-4"
+            className="w-full py-4 text-lg min-h-[56px]"
             disabled={loading}
+            style={{ marginTop: 8 }}
           >
             {loading ? (
               <span className="flex items-center justify-center gap-2">
@@ -205,7 +213,10 @@ export default function LoginScreen({ onLogin }) {
         </form>
 
         {/* Alt bilgi */}
-        <p className="text-center text-slate-600 text-xs mt-14">
+        <p
+          className="text-center text-slate-600 text-xs"
+          style={{ marginTop: 48 }}
+        >
           🔒 Verileriniz cihazınızda güvenle saklanır
         </p>
       </div>
