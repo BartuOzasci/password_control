@@ -56,7 +56,7 @@ export default function DocumentsScreen() {
           <p className="text-slate-500 text-sm">Henüz belge eklenmemiş</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {documentsData.map((doc, index) => (
             <div
               key={doc.id}

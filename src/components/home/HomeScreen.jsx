@@ -53,9 +53,9 @@ export default function HomeScreen({ onNavigate }) {
   ];
 
   return (
-    <div className="px-5 py-8 space-y-6 animate-fade-in">
+    <div className="px-5 py-8 space-y-8 animate-fade-in">
       {/* Başlık */}
-      <div className="text-center mb-4">
+      <div className="text-center mb-2">
         <h2 className="text-2xl font-bold text-white">Ne yapmak istersiniz?</h2>
         <p className="text-slate-500 text-base mt-2">
           Aşağıdan bir kategori seçin
@@ -63,7 +63,7 @@ export default function HomeScreen({ onNavigate }) {
       </div>
 
       {/* Kartlar */}
-      <div className="space-y-5">
+      <div className="space-y-7">
         {cards.map((card, i) => (
           <button
             key={card.key}
@@ -112,7 +112,7 @@ export default function HomeScreen({ onNavigate }) {
       </div>
 
       {/* Alt bilgi */}
-      <div className="mt-8 text-center">
+      <div className="mt-10 text-center">
         <div className="inline-flex items-center gap-2 bg-dark-card border border-white/5 rounded-full px-4 py-2">
           <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
           <span className="text-sm text-slate-500">

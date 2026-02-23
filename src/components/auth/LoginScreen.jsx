@@ -56,7 +56,7 @@ export default function LoginScreen({ onLogin }) {
         {/* ── Form ── */}
         <form
           onSubmit={handleSubmit}
-          className="bg-dark-card/80 backdrop-blur-xl border border-white/10 rounded-3xl p-7 space-y-6"
+          className="bg-dark-card/80 backdrop-blur-xl border border-white/10 rounded-3xl p-7 space-y-8"
         >
           {/* Kullanıcı Adı */}
           <div>
@@ -64,7 +64,7 @@ export default function LoginScreen({ onLogin }) {
               Kullanıcı Adı
             </label>
             <div className="relative">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500">
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 z-10">
                 {/* User icon */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ export default function LoginScreen({ onLogin }) {
               Şifre
             </label>
             <div className="relative">
-              <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500">
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 z-10">
                 {/* Lock icon */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -205,7 +205,7 @@ export default function LoginScreen({ onLogin }) {
         </form>
 
         {/* Alt bilgi */}
-        <p className="text-center text-slate-600 text-xs mt-6">
+        <p className="text-center text-slate-600 text-xs mt-10">
           🔒 Verileriniz cihazınızda güvenle saklanır
         </p>
       </div>
