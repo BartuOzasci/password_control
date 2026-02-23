@@ -83,12 +83,14 @@ Password_Security/
 ## 📲 Mobilde Ana Ekrana Ekleme
 
 ### iOS (Safari)
+
 1. Uygulamayı Safari'de aç
 2. Alt menüden **Paylaş** butonuna dokun
 3. **"Ana Ekrana Ekle"** seçeneğini seç
 4. İsmi onayla → **Ekle**
 
 ### Android (Chrome)
+
 1. Uygulamayı Chrome'da aç
 2. Sağ üstten **⋮ Menü** → **"Ana Ekrana Ekle"**
 3. Onayla → Ana ekranda uygulama ikonu görünür
@@ -98,14 +100,17 @@ Password_Security/
 ## ⚙️ Kişiselleştirme
 
 ### Yeni belge eklemek
+
 1. PDF'i `public/documents/` klasörüne koy
 2. Görselini `public/img/` klasörüne koy
 3. `src/data/documentsData.js` dosyasına yeni satır ekle
 
 ### Yeni kullanıcı eklemek
+
 `src/data/users.js` dosyasına yeni `{ username, password }` nesnesi ekle.
 
 ### Oturum süresini değiştirmek
+
 `src/config/constants.js` içindeki `SESSION_DURATION_MS` değerini güncelle.
 
 ---
@@ -119,4 +124,3 @@ Tüm veriler yalnızca **cihazın yerel depolama alanına (localStorage)** kayde
 <div align="center">
   <sub>Made with ❤️ by Bartu Özaşcı</sub>
 </div>
-
