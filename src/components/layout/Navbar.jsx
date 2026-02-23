@@ -47,11 +47,11 @@ export default function Navbar({ user, onLogout, onBack, showBack }) {
         {/* Sağ: Çıkış */}
         <button
           onClick={onLogout}
-          className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 transition cursor-pointer active:scale-95"
+          className="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 hover:bg-white/10 transition cursor-pointer active:scale-95"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6 text-slate-300"
+            className="w-7 h-7 text-slate-300"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

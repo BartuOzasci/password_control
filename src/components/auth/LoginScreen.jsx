@@ -64,7 +64,7 @@ export default function LoginScreen({ onLogin }) {
               Kullanıcı Adı
             </label>
             <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 z-10">
+              <span className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-500 z-10 pointer-events-none">
                 {/* User icon */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +86,7 @@ export default function LoginScreen({ onLogin }) {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Kullanıcı adınız"
-                className="w-full pl-12 pr-5 py-4 text-base bg-dark-surface/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition min-h-[52px]"
+                className="w-full pl-14 pr-5 py-4 text-base bg-dark-surface/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition min-h-[52px]"
               />
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function LoginScreen({ onLogin }) {
               Şifre
             </label>
             <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 z-10">
+              <span className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-500 z-10 pointer-events-none">
                 {/* Lock icon */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -119,7 +119,7 @@ export default function LoginScreen({ onLogin }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Şifreniz"
-                className="w-full pl-12 pr-14 py-4 text-base bg-dark-surface/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition min-h-[52px]"
+                className="w-full pl-14 pr-14 py-4 text-base bg-dark-surface/60 border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition min-h-[52px]"
               />
               <button
                 type="button"
@@ -190,7 +190,7 @@ export default function LoginScreen({ onLogin }) {
           {/* Giriş Butonu */}
           <Button
             type="submit"
-            className="w-full py-4 text-lg min-h-[56px]"
+            className="w-full py-4 text-lg min-h-[56px] mt-4"
             disabled={loading}
           >
             {loading ? (
@@ -205,7 +205,7 @@ export default function LoginScreen({ onLogin }) {
         </form>
 
         {/* Alt bilgi */}
-        <p className="text-center text-slate-600 text-xs mt-10">
+        <p className="text-center text-slate-600 text-xs mt-14">
           🔒 Verileriniz cihazınızda güvenle saklanır
         </p>
       </div>

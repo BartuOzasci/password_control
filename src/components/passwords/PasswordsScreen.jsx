@@ -70,7 +70,7 @@ export default function PasswordsScreen({ onActivity }) {
   return (
     <div className="px-5 py-6 animate-fade-in">
       {/* Başlık & Ekle butonu */}
-      <div className="flex items-center justify-center my-4">
+      <div className="flex items-center justify-center my-8">
         <Button variant="primary" size="lg" onClick={() => setModalOpen(true)}>
           <span className="flex items-center gap-2">
             <svg
@@ -170,7 +170,7 @@ export default function PasswordsScreen({ onActivity }) {
                     onClick={() => {
                       navigator.clipboard.writeText(item.password);
                     }}
-                    className="w-12 h-12 flex items-center justify-center rounded-xl bg-success/15 hover:bg-success/25 text-success transition cursor-pointer active:scale-95"
+                    className="w-12 h-12 flex items-center justify-center rounded-lg bg-success/15 hover:bg-success/25 text-success transition cursor-pointer active:scale-95"
                     title="Kopyala"
                   >
                     <svg
@@ -191,7 +191,7 @@ export default function PasswordsScreen({ onActivity }) {
                 )}
                 <button
                   onClick={() => handleDelete(item.id)}
-                  className="w-12 h-12 flex items-center justify-center rounded-xl bg-danger/15 hover:bg-danger/25 text-danger transition cursor-pointer active:scale-95"
+                  className="w-12 h-12 flex items-center justify-center rounded-lg bg-danger/15 hover:bg-danger/25 text-danger transition cursor-pointer active:scale-95"
                   title="Sil"
                 >
                   <svg
