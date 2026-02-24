@@ -35,7 +35,7 @@ export default function DocumentsScreen() {
   const [newTitle, setNewTitle] = useState("");
   const [newOwner, setNewOwner] = useState("Bartu");
   const [newImage, setNewImage] = useState(IMAGE_OPTIONS[0].src);
-  const [newFile, setNewFile] = useState(null);
+  const [newFileData, setNewFileData] = useState(null);
   const [newFileName, setNewFileName] = useState("");
   const fileInputRef = useRef(null);
 
@@ -68,12 +68,16 @@ export default function DocumentsScreen() {
     document.body.removeChild(link);
   };
 
-  /* Dosya seçildiğinde */
+  /* Dosya seçildiğinde base64'e çevir */
   const handleFileSelect = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setNewFile(file);
       setNewFileName(file.name);
+      const reader = new FileReader();
+      reader.onload = () => {
+        setNewFileData(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -82,7 +86,7 @@ export default function DocumentsScreen() {
     setNewTitle("");
     setNewOwner("Bartu");
     setNewImage(IMAGE_OPTIONS[0].src);
-    setNewFile(null);
+    setNewFileData(null);
     setNewFileName("");
     setShowAddModal(true);
   };
@@ -91,30 +95,18 @@ export default function DocumentsScreen() {
   const handleAddDocument = () => {
     if (!newTitle.trim()) return;
 
-    /* Dosya varsa blob URL oluştur, yoksa boş bırak */
-    let fileUrl = "";
-    if (newFile) {
-      fileUrl = URL.createObjectURL(newFile);
-    }
-
     const newDoc = {
       id: Date.now(),
       title: newTitle.trim(),
       owner: newOwner,
       image: newImage,
-      file: fileUrl,
+      file: newFileData || "",
       isCustom: true,
     };
 
     const updatedDocs = [...customDocs, newDoc];
     setCustomDocs(updatedDocs);
-
-    /* localStorage'a kaydet (blob URL hariç meta bilgiler) */
-    const storable = updatedDocs.map((d) => ({
-      ...d,
-      file: d.file,
-    }));
-    setItem(STORAGE_KEY, storable);
+    setItem(STORAGE_KEY, updatedDocs);
 
     setShowAddModal(false);
   };
