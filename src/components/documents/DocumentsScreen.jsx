@@ -53,19 +53,46 @@ export default function DocumentsScreen() {
       ? allDocuments
       : allDocuments.filter((doc) => doc.owner === filter);
 
+  /* data URL'yi blob URL'ye çevir */
+  const dataUrlToBlob = (dataUrl) => {
+    const parts = dataUrl.split(",");
+    const mime = parts[0].match(/:(.*?);/)[1];
+    const bstr = atob(parts[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) u8arr[n] = bstr.charCodeAt(n);
+    return new Blob([u8arr], { type: mime });
+  };
+
   /* PDF'i yeni sekmede aç */
   const handleView = (filePath) => {
-    window.open(filePath, "_blank");
+    if (!filePath) return;
+    if (filePath.startsWith("data:")) {
+      const blob = dataUrlToBlob(filePath);
+      const url = URL.createObjectURL(blob);
+      window.open(url, "_blank");
+    } else {
+      window.open(filePath, "_blank");
+    }
   };
 
   /* PDF'i indir */
   const handleDownload = (filePath, title) => {
+    if (!filePath) return;
+    let href = filePath;
+    if (filePath.startsWith("data:")) {
+      const blob = dataUrlToBlob(filePath);
+      href = URL.createObjectURL(blob);
+    }
     const link = document.createElement("a");
-    link.href = filePath;
-    link.download = `${title}.pdf`;
+    link.href = href;
+    link.download = title || "belge";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    if (filePath.startsWith("data:")) {
+      URL.revokeObjectURL(href);
+    }
   };
 
   /* Dosya seçildiğinde base64'e çevir */

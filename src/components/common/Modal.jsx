@@ -25,7 +25,7 @@ export default function Modal({ isOpen, onClose, title, children }) {
 
       {/* Content */}
       <div
-        className="relative w-full max-w-md bg-dark-card border border-white/10 rounded-3xl p-7 animate-slide-up"
+        className="relative w-full max-w-md max-h-[90dvh] overflow-y-auto bg-dark-card border border-white/10 rounded-3xl p-7 animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
