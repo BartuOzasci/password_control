@@ -317,7 +317,7 @@ export default function DocumentsScreen() {
                   </button>
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex flex-col gap-2">
                   <Button
                     variant="secondary"
                     size="sm"
