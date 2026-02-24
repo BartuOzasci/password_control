@@ -6,26 +6,61 @@
 import { useEffect } from "react";
 
 export default function Modal({ isOpen, onClose, title, children }) {
-  /* ESC ile kapat */
+  /* ESC ile kapat + body scroll kilitle */
   useEffect(() => {
     const handler = (e) => e.key === "Escape" && onClose();
-    if (isOpen) document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
+    if (isOpen) {
+      document.addEventListener("keydown", handler);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.removeEventListener("keydown", handler);
+      document.body.style.overflow = "";
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        zIndex: 9999,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "16px",
+      }}
       onClick={onClose}
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "rgba(0,0,0,0.65)",
+          backdropFilter: "blur(4px)",
+        }}
+      />
 
       {/* Content */}
       <div
-        className="relative w-full max-w-md max-h-[90dvh] overflow-y-auto bg-dark-card border border-white/10 rounded-3xl p-7 animate-slide-up"
+        style={{
+          position: "relative",
+          width: "100%",
+          maxWidth: "448px",
+          maxHeight: "90vh",
+          overflowY: "auto",
+          background: "#1e293b",
+          border: "1px solid rgba(255,255,255,0.1)",
+          borderRadius: "24px",
+          padding: "28px",
+          zIndex: 1,
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
