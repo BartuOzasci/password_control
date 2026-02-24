@@ -118,12 +118,13 @@ export default function DocumentsScreen() {
 
   /* Belge ekleme modalını sıfırla ve aç */
   const openAddModal = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setNewTitle("");
     setNewOwner("Bartu");
     setNewImage(IMAGE_OPTIONS[0].src);
     setNewFileData(null);
     setNewFileName("");
-    setShowAddModal(true);
+    setTimeout(() => setShowAddModal(true), 300);
   };
 
   /* Belge sil */
@@ -236,7 +237,7 @@ export default function DocumentsScreen() {
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap: 32 }}>
+        <div className="grid grid-cols-2" style={{ gap: 12 }}>
           {filteredDocuments.map((doc, index) => (
             <div
               key={doc.id}
@@ -245,7 +246,7 @@ export default function DocumentsScreen() {
             >
               {/* Sahip etiketi */}
               <div className="relative">
-                <div className="aspect-[4/3] bg-dark-surface flex items-center justify-center overflow-hidden">
+                <div className="h-28 bg-dark-surface flex items-center justify-center overflow-hidden">
                   <img
                     src={doc.image}
                     alt={doc.title}
@@ -277,7 +278,7 @@ export default function DocumentsScreen() {
                 </div>
                 {/* Sahip badge */}
                 <span
-                  className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold shadow-lg ${
+                  className={`absolute top-2 right-2 px-2 py-0.5 rounded-full text-xs font-bold shadow-lg ${
                     doc.owner === "Bartu"
                       ? "bg-primary text-white"
                       : "bg-secondary text-white"
@@ -288,20 +289,20 @@ export default function DocumentsScreen() {
               </div>
 
               {/* İçerik */}
-              <div className="p-4">
-                <div className="flex items-start justify-between gap-2 mb-4">
-                  <h3 className="text-base font-bold text-white truncate flex-1">
+              <div className="p-3">
+                <div className="flex items-start justify-between gap-1 mb-3">
+                  <h3 className="text-xs font-bold text-white truncate flex-1">
                     {doc.title}
                   </h3>
                   {/* Sil butonu */}
                   <button
                     onClick={() => handleDelete(doc)}
-                    className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg bg-dark-surface hover:bg-danger/20 text-slate-500 hover:text-danger transition-all duration-200 cursor-pointer"
+                    className="w-6 h-6 flex-shrink-0 flex items-center justify-center rounded-lg bg-dark-surface hover:bg-danger/20 text-slate-500 hover:text-danger transition-all duration-200 cursor-pointer"
                     title="Belgeyi Sil"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="w-4 h-4"
+                      className="w-3 h-3"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -319,14 +320,14 @@ export default function DocumentsScreen() {
                 <div className="flex gap-3">
                   <Button
                     variant="secondary"
-                    size="md"
+                    size="sm"
                     className="flex-1"
                     onClick={() => handleView(doc.file)}
                   >
-                    <span className="flex items-center justify-center gap-1.5">
+                    <span className="flex items-center justify-center gap-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-3.5 h-3.5"
+                        className="w-3 h-3"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -348,14 +349,14 @@ export default function DocumentsScreen() {
                   </Button>
                   <Button
                     variant="primary"
-                    size="md"
+                    size="sm"
                     className="flex-1"
                     onClick={() => handleDownload(doc.file, doc.title)}
                   >
-                    <span className="flex items-center justify-center gap-1.5">
+                    <span className="flex items-center justify-center gap-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="w-3.5 h-3.5"
+                        className="w-3 h-3"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
