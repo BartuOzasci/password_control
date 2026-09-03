@@ -30,7 +30,8 @@ export default function Button({
     <button
       className={`
         font-semibold transition-all duration-200 active:scale-95
-        cursor-pointer select-none
+        cursor-pointer select-none inline-flex items-center justify-center
+        disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100
         ${variants[variant] || variants.primary}
         ${sizes[size] || sizes.md}
         ${className}

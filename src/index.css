@@ -1,18 +1,21 @@
 @import "tailwindcss";
 
-/* ── Theme Colors ── */
+/* ── Theme Colors & Tokens ── */
 @theme {
   --color-primary: #6366f1;
   --color-primary-dark: #4f46e5;
-  --color-primary-light: #818cf8;
+  --color-primary-light: #a5b4fc;
   --color-secondary: #0ea5e9;
   --color-secondary-dark: #0284c7;
   --color-accent: #f59e0b;
-  --color-dark: #0f172a;
-  --color-dark-card: #1e293b;
-  --color-dark-surface: #334155;
-  --color-danger: #ef4444;
+  --color-dark: #0b1120;
+  --color-dark-card: #141b2e;
+  --color-dark-surface: #1e2740;
+  --color-danger: #f43f5e;
   --color-success: #22c55e;
+
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Manrope", "Inter", system-ui, sans-serif;
 }
 
 /* ── Global Styles ── */
@@ -23,13 +26,17 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family:
-    "Segoe UI",
-    system-ui,
-    -apple-system,
-    sans-serif;
-  background-color: #0f172a;
+  font-family: var(--font-sans);
+  background-color: var(--color-dark);
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(99, 102, 241, 0.16), transparent 42%),
+    radial-gradient(circle at 88% 8%, rgba(14, 165, 233, 0.12), transparent 40%);
+  background-attachment: fixed;
   color: #f1f5f9;
   min-height: 100vh;
   min-height: 100dvh;
@@ -42,9 +49,23 @@ body {
   min-height: 100dvh;
 }
 
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+/* ── Accessible focus ring (keyboard users only) ── */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 2.5px solid var(--color-primary-light);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -52,6 +73,24 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #334155;
   border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ── Reusable surfaces ── */
+.glass-panel {
+  background: rgba(20, 27, 46, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #a5b4fc, #7dd3fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* ── Animations ── */
@@ -68,7 +107,7 @@ body {
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -92,6 +131,24 @@ body {
     transform: rotate(360deg);
   }
 }
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
 
 .animate-fade-in {
   animation: fadeIn 0.4s ease-out forwards;
@@ -104,4 +161,29 @@ body {
 }
 .animate-spin-slow {
   animation: spin-slow 1.5s linear infinite;
+}
+.animate-toast-in {
+  animation: toastIn 0.25s ease-out forwards;
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #1e2740 25%,
+    #263252 37%,
+    #1e2740 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+/* ── Respect reduced-motion preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

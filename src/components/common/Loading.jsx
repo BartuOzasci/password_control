@@ -7,11 +7,15 @@ import { APP } from "../../config/constants";
 
 export default function Loading() {
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-dark">
+    <div
+      role="status"
+      aria-live="polite"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-dark"
+    >
       {/* Logo */}
       <img
         src={APP.logo}
-        alt={APP.name}
+        alt=""
         className="w-20 h-20 mb-6 rounded-2xl animate-pulse-glow"
       />
 

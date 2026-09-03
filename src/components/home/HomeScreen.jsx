@@ -16,6 +16,7 @@ export default function HomeScreen({ onNavigate }) {
           viewBox="0 0 24 24"
           stroke="currentColor"
           strokeWidth={1.5}
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -39,6 +40,7 @@ export default function HomeScreen({ onNavigate }) {
           viewBox="0 0 24 24"
           stroke="currentColor"
           strokeWidth={1.5}
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -56,14 +58,16 @@ export default function HomeScreen({ onNavigate }) {
     <div className="px-5 py-8 animate-fade-in">
       {/* Başlık */}
       <div className="text-center" style={{ marginBottom: 32 }}>
-        <h2 className="text-2xl font-bold text-white">Ne yapmak istersiniz?</h2>
+        <h2 className="text-2xl font-bold text-white">
+          Ne yapmak istersiniz?
+        </h2>
         <p className="text-slate-500 text-base" style={{ marginTop: 8 }}>
           Aşağıdan bir kategori seçin
         </p>
       </div>
 
       {/* Kartlar */}
-      <div className="flex flex-col" style={{ gap: 40 }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-5">
         {cards.map((card, i) => (
           <button
             key={card.key}
@@ -72,8 +76,10 @@ export default function HomeScreen({ onNavigate }) {
               w-full flex items-center gap-5 p-6
               bg-gradient-to-r ${card.gradient}
               rounded-3xl shadow-xl ${card.glow}
+              hover:brightness-110 hover:-translate-y-0.5
               active:scale-[0.97] transition-all duration-200
               cursor-pointer text-left min-h-[100px]
+              animate-slide-up
             `}
             style={{ animationDelay: `${i * 0.1}s` }}
           >
@@ -91,7 +97,7 @@ export default function HomeScreen({ onNavigate }) {
             </div>
 
             {/* Arrow */}
-            <div className="ml-auto text-white/40">
+            <div className="ml-auto text-white/40" aria-hidden="true">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6"
@@ -114,7 +120,7 @@ export default function HomeScreen({ onNavigate }) {
       {/* Alt bilgi */}
       <div className="text-center" style={{ marginTop: 48 }}>
         <div className="inline-flex items-center gap-2 bg-dark-card border border-white/5 rounded-full px-4 py-2">
-          <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
+          <span className="w-2 h-2 bg-success rounded-full animate-pulse" aria-hidden="true" />
           <span className="text-sm text-slate-500">
             Tüm veriler cihazınızda şifreli saklanır
           </span>

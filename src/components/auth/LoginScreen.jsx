@@ -34,40 +34,43 @@ export default function LoginScreen({ onLogin }) {
   };
 
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center bg-dark px-6">
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-dark px-6 overflow-y-auto py-10">
       {/* ── Arka plan gradient efektleri ── */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-md animate-fade-in">
+      <div className="relative z-10 w-full max-w-md animate-fade-in m-auto">
         {/* ── Logo & Başlık ── */}
         <div className="flex flex-col items-center mb-10">
           <img
             src={APP.logo}
-            alt={APP.name}
+            alt=""
             className="w-24 h-24 rounded-3xl shadow-2xl shadow-primary/30 mb-5"
           />
-          <h1 className="text-2xl font-extrabold text-white tracking-tight">
+          <h1 className="text-2xl font-extrabold text-white tracking-tight text-center">
             {APP.name}
           </h1>
-          <p className="text-slate-400 text-sm mt-1">{APP.tagline}</p>
+          <p className="text-slate-400 text-sm mt-1 text-center">{APP.tagline}</p>
         </div>
 
         {/* ── Form ── */}
         <form
           onSubmit={handleSubmit}
+          noValidate
+          aria-describedby={error ? "login-error" : undefined}
           className="bg-dark-card/80 backdrop-blur-xl border border-white/10 rounded-3xl p-7"
         >
           {/* Kullanıcı Adı */}
           <div style={{ marginBottom: 28 }}>
             <label
+              htmlFor="login-username"
               className="block text-sm font-semibold text-slate-400 uppercase tracking-wider"
               style={{ marginBottom: 10 }}
             >
               Kullanıcı Adı
             </label>
             <div className="flex items-center gap-3 bg-dark-surface/60 border border-white/10 rounded-2xl px-5 min-h-[52px] focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition">
-              <span className="text-slate-500 shrink-0">
+              <span className="text-slate-500 shrink-0" aria-hidden="true">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5"
@@ -84,7 +87,10 @@ export default function LoginScreen({ onLogin }) {
                 </svg>
               </span>
               <input
+                id="login-username"
+                name="username"
                 type="text"
+                autoComplete="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Kullanıcı adınız"
@@ -96,13 +102,14 @@ export default function LoginScreen({ onLogin }) {
           {/* Şifre */}
           <div style={{ marginBottom: 28 }}>
             <label
+              htmlFor="login-password"
               className="block text-sm font-semibold text-slate-400 uppercase tracking-wider"
               style={{ marginBottom: 10 }}
             >
               Şifre
             </label>
             <div className="flex items-center gap-3 bg-dark-surface/60 border border-white/10 rounded-2xl px-5 min-h-[52px] focus-within:ring-2 focus-within:ring-primary/50 focus-within:border-primary transition">
-              <span className="text-slate-500 shrink-0">
+              <span className="text-slate-500 shrink-0" aria-hidden="true">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-5 h-5"
@@ -119,7 +126,10 @@ export default function LoginScreen({ onLogin }) {
                 </svg>
               </span>
               <input
+                id="login-password"
+                name="password"
                 type={showPass ? "text" : "password"}
+                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Şifreniz"
@@ -128,6 +138,8 @@ export default function LoginScreen({ onLogin }) {
               <button
                 type="button"
                 onClick={() => setShowPass(!showPass)}
+                aria-label={showPass ? "Şifreyi gizle" : "Şifreyi göster"}
+                aria-pressed={showPass}
                 className="text-slate-500 hover:text-slate-300 transition cursor-pointer shrink-0 p-1"
               >
                 {showPass ? (
@@ -138,6 +150,7 @@ export default function LoginScreen({ onLogin }) {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     strokeWidth={1.5}
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -153,6 +166,7 @@ export default function LoginScreen({ onLogin }) {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                     strokeWidth={1.5}
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -173,6 +187,8 @@ export default function LoginScreen({ onLogin }) {
           {/* Hata mesajı */}
           {error && (
             <div
+              id="login-error"
+              role="alert"
               className="flex items-center gap-2 bg-danger/10 border border-danger/30 text-danger text-sm rounded-xl px-4 py-3 animate-fade-in"
               style={{ marginBottom: 20 }}
             >
@@ -183,6 +199,7 @@ export default function LoginScreen({ onLogin }) {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 strokeWidth={2}
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"

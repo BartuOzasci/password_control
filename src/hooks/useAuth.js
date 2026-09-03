@@ -10,27 +10,27 @@ import { getItem, setItem, removeItem } from '../utils/storage';
 import users from '../data/users';
 
 const useAuth = () => {
-  const [user, setUser] = useState(null);          // Oturum açmış kullanıcı
-  const [checking, setChecking] = useState(true);  // Otomatik giriş kontrolü
-
-  /* ── Uygulama açılışında oturum kontrolü ── */
-  useEffect(() => {
+  /* ── Oturum kontrolü, ilk render sırasında (yan etkisiz) yapılır ── */
+  const [user, setUser] = useState(() => {
     const savedUser = getItem(STORAGE_KEYS.AUTH_USER);
     const savedTime = getItem(STORAGE_KEYS.AUTH_TIMESTAMP);
 
-    if (savedUser && savedTime) {
-      const elapsed = Date.now() - savedTime;
-      if (elapsed < SESSION_DURATION_MS) {
-        setUser(savedUser);
-      } else {
-        // Süre doldu → temizle
-        removeItem(STORAGE_KEYS.AUTH_USER);
-        removeItem(STORAGE_KEYS.AUTH_TIMESTAMP);
-      }
+    if (savedUser && savedTime && Date.now() - savedTime < SESSION_DURATION_MS) {
+      return savedUser;
     }
+    if (savedUser || savedTime) {
+      // Süre doldu → temizle
+      removeItem(STORAGE_KEYS.AUTH_USER);
+      removeItem(STORAGE_KEYS.AUTH_TIMESTAMP);
+    }
+    return null;
+  });
+  const [checking, setChecking] = useState(true);  // Otomatik giriş kontrolü
 
-    // Kısa bir gecikme ile "yükleniyor" hissi ver
-    setTimeout(() => setChecking(false), 1200);
+  /* ── Kısa bir gecikme ile "yükleniyor" hissi ver ── */
+  useEffect(() => {
+    const timer = setTimeout(() => setChecking(false), 1200);
+    return () => clearTimeout(timer);
   }, []);
 
   /* ── Giriş ── */
